@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimaryDark">#000000</color>
+    <color name="colorPrimary">#fff</color>
 
     <!-- Board Colors -->
     <color name="red">#E63A3F</color>

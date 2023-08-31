@@ -12,7 +12,6 @@
     <string name="endgame_lose_title">Spiel vorbei</string>
     <string name="endgame_new_game_button">Neues Spiel</string>
     <string name="endgame_replay">Erneut spielen</string>
-    <string name="endgame_seed" fomatted="false">Saatwert: %s (zum Kopieren antippen)</string>
 
     <!-- Seed Dialog -->
     <string name="seed_dialog_title">Neues Spiel nach Saatwert</string>
@@ -34,20 +33,4 @@
     <string name="settings_clear_high_scores_dialog_cancel">Nein</string>
     <string name="settings_clear_high_scores_toast">Highscores gelöscht</string>
 
-    <!--Info activity-->
-    <string name="info_license">Veröffentlicht unter der MIT-Lizenz</string>
-    <string name="info_source"><a href="http://github.com/gunshippenguin/open_flood">github.com/GunshipPenguin/open_flood</a></string>
-    <string name="info_instructions_title">Spielablauf</string>
-    <string name="info_instructions">
-        Tippen Sie auf die farbigen Tasten entlang der Unterseite des Spielfelds, um alle zusammenhängend gefärbten Zellen
-        beginnend oben links mit dieser Farbe zu fluten. Das Ziel des Spiels ist es, vor Erreichen der maximal zulässigen
-        Anzahl an Zügen das Spielfeld mit einer einzigen Farbe zu füllen.
-    </string>
-    <string name="info_seeds_title">Saatwert</string>
-    <string name="info_seeds">
-        Saatwerte bestimmen die Ausgangssituation des Spielfeldes und erlauben Ihnen interessante Spielaufstellungen zu
-        speichern um sie später erneut zu spielen oder mit Freunden zu teilen.
-        Um ein Spiel aus einem vorhandenen Saatwert zu erzeugen, drücken und halten Sie die Taste für ein neues Spiel.
-    </string>
-    <string name="info_back">Zurück</string>
 </resources>

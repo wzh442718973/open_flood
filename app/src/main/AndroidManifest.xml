@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".SettingsActivity"
+            android:label="@string/settings_settings"
             android:screenOrientation="portrait">
         </activity>
         <activity android:name="com.gunshippenguin.openflood.InfoActivity"

@@ -12,7 +12,6 @@
     <string name="endgame_lose_title">Ludo finita</string>
     <string name="endgame_new_game_button">Nova ludo</string>
     <string name="endgame_replay">Reludi</string>
-    <string name="endgame_seed" fomatted="false">Tabulĝermo: %s (frapetu por kopii)</string>
 
     <!-- Seed Dialog -->
     <string name="seed_dialog_title">Nova ludo de tabulĝermo</string>
@@ -34,12 +33,5 @@
     <string name="settings_clear_high_scores_dialog_cancel">Ne</string>
     <string name="settings_clear_high_scores_toast">Plej bonaj rezultoj forigitaj</string>
 
-    <!--Info activity-->
-    <string name="info_license">Eldonita laŭ MIT-permesilo</string>
-    <string name="info_source"><a href="http://github.com/gunshippenguin/open_flood">github.com/GunshipPenguin/open_flood</a></string>
-    <string name="info_instructions_title">Ludado</string>
-    <string name="info_instructions">Vi komencas ludadon ĉe maldekstra supra angulo de tabulo. Frapetu kolorajn butonojn sube de tabulo por superverŝi ĉiujn apudajn plenigitajn ĉelojn per elektita koloro. Celo de la ludo estas superverŝi ĉiun tabulon per unu koloro dum malpli ol maksimuma permesata nombro da movoj.</string>
-    <string name="info_seeds_title">Tabulĝermoj</string>
-    <string name="info_seeds">Tabulĝermoj ebligas al vi konservi interesajn tabulojn por ludi ilin poste aŭ por kunhavigi ilin kun amikoj. Por generi tabulon de tabulĝermon, premtenu butonon de nova ludo.</string>
-    <string name="info_back">Reveni</string>
+
 </resources>

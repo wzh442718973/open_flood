@@ -1,134 +1,154 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background"
-    android:padding="@dimen/outer_layout_padding">
+    >
 
-    <LinearLayout
-        android:orientation="horizontal"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/background_box"
-        android:layout_margin="@dimen/box_margins">
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center">
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@mipmap/ic_launcher"
-                android:id="@+id/imageView" />
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="end"
-            android:text="@string/app_name"
-            android:id="@+id/textView3"
-            android:textSize="@dimen/large_text_size" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:orientation="vertical"
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/background_box"
-        android:layout_margin="@dimen/box_margins">
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        android:theme="?attr/actionBarTheme"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/settings_settings"
-            android:textSize="@dimen/medium_text_size"
-            android:id="@+id/settingsTextView"
-            android:layout_gravity="center_horizontal" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/goup_board_size"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:cardBackgroundColor="#66ffffff"
+        app:contentPadding="5dp"
+        app:cardCornerRadius="3dp"
+        app:layout_constraintBottom_toTopOf="@id/goup_color_number"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/toolbar">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <TextView
+                android:id="@+id/textView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/small_text_size"
                 android:text="@string/settings_board_size"
-                android:id="@+id/textView" />
+                android:textSize="@dimen/small_text_size" />
 
             <RadioGroup
+                android:id="@+id/boardSizeRadioGroup"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:id="@+id/boardSizeRadioGroup">
+                android:orientation="vertical">
 
             </RadioGroup>
 
         </LinearLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/goup_color_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:cardBackgroundColor="#66ffffff"
+        app:contentPadding="5dp"
+        app:cardCornerRadius="3dp"
+        app:layout_constraintBottom_toTopOf="@id/group_checks"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/goup_board_size">
 
         <LinearLayout
-            android:orientation="vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
 
             <TextView
+                android:id="@+id/textView2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textSize="@dimen/small_text_size"
                 android:text="@string/settings_num_colors"
-                android:id="@+id/textView2" />
+                android:textSize="@dimen/small_text_size" />
 
             <RadioGroup
+                android:id="@+id/numColorsRadioGroup"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:id="@+id/numColorsRadioGroup">
+                android:orientation="horizontal">
 
             </RadioGroup>
 
         </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/settings_color_blind"
-            android:textSize="@dimen/small_text_size"
-            android:id="@+id/colorBlindCheckBox" />
-
-        <CheckBox
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/settings_old_colors"
-            android:textSize="@dimen/small_text_size"
-            android:id="@+id/oldColorsCheckBox" />
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/settings_clear_high_scores_button"
-            android:textSize="@dimen/small_text_size"
-            android:id="@+id/clearHighScoresButton" />
+    <androidx.cardview.widget.CardView
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginTop="3dp"
+        android:id="@+id/group_checks"
+        app:cardBackgroundColor="#66ffffff"
+        app:contentPadding="5dp"
+        app:cardCornerRadius="3dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@id/applyButton"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/goup_color_number">
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:gravity="center">
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/box_margins"
+
+            android:orientation="vertical">
+
+
+            <CheckBox
+                android:id="@+id/colorBlindCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/settings_color_blind"
+                android:textSize="@dimen/small_text_size" />
+
+            <CheckBox
+                android:id="@+id/oldColorsCheckBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/settings_old_colors"
+                android:textSize="@dimen/small_text_size" />
 
             <Button
+                android:id="@+id/clearHighScoresButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/settings_apply_button"
-                android:textSize="@dimen/small_text_size"
-                android:id="@+id/applyButton" />
+                android:text="@string/settings_clear_high_scores_button"
+                android:textSize="@dimen/small_text_size" />
+
         </LinearLayout>
+    </androidx.cardview.widget.CardView>
 
-    </LinearLayout>
+    <Button
+        android:id="@+id/applyButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/settings_apply_button"
+        android:textSize="@dimen/small_text_size"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/group_checks" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

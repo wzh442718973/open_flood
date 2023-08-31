@@ -35,6 +35,22 @@ public class FloodView extends View {
         return;
     }
 
+    @Override
+    protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
+        int width = MeasureSpec.getSize(widthMeasureSpec);
+        int heigh = MeasureSpec.getSize(heightMeasureSpec);
+
+        if(width < 0 || heigh < 0){
+            return;
+        }
+
+        if(width > heigh){
+            super.setMeasuredDimension(heigh, heigh);
+        }else{
+            super.setMeasuredDimension(width, width);
+        }
+    }
+
     private void setDrawingInfo(){
         int dimension;
         if (getWidth() > getHeight()) {

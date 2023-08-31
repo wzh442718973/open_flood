@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item android:id="@+id/newGameButton"
+        android:title="NewGame"
+        android:icon="@drawable/star"
+        app:showAsAction="always"/>
+
+    <item android:id="@+id/settingsButton"
+        android:title="@string/settings_settings"
+        android:icon="@drawable/gear"
+        app:showAsAction="always"/>
+
+    <item android:id="@+id/infoButton"
+        android:title="Info"
+        android:icon="@drawable/info"
+        app:showAsAction="ifRoom"/>
+
+    <item android:id="@+id/version"
+        android:title=""
+        app:showAsAction="never"/>
+</menu>

@@ -5,6 +5,8 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
@@ -25,6 +27,13 @@ public class SettingsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
+
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.baseline_home_24);
+        toolbar.setNavigationOnClickListener((view) ->{
+            finish();
+        });
 
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(this);
 

@@ -4,11 +4,18 @@ import android.content.ClipData;
 import android.content.ClipboardManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageInfo;
 import android.graphics.Paint;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.Toolbar;
 import androidx.fragment.app.DialogFragment;
 import androidx.appcompat.app.AppCompatActivity;
+
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AnimationUtils;
@@ -42,10 +49,51 @@ public class GameActivity extends AppCompatActivity
     // Paints to be used for the board
     private Paint paints[];
 
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.activity_menu, menu);
+
+        menu.findItem(R.id.infoButton).setVisible(false);
+        try{
+            PackageInfo info =getPackageManager().getPackageInfo(getPackageName(), 0);
+            menu.findItem(R.id.version).setTitle(String.format("v%s (%d)",info.versionName, info.versionCode));
+        }catch (Throwable e){
+        }
+
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.infoButton: {
+                Intent launchSettingsIntent = new Intent(GameActivity.this, InfoActivity.class);
+                startActivity(launchSettingsIntent);
+            }
+            break;
+            case R.id.newGameButton: {
+                newGame();
+            }
+            break;
+            case R.id.settingsButton: {
+                Intent launchSettingsIntent = new Intent(GameActivity.this, SettingsActivity.class);
+                startActivityForResult(launchSettingsIntent, UPDATE_SETTINGS);
+            }
+            break;
+        }
+        return true;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        toolbar.setNavigationIcon(R.mipmap.ic_launcher);
+
 
         // Initialize the SharedPreferences and SharedPreferences editor
         sp = PreferenceManager.getDefaultSharedPreferences(this);
@@ -58,40 +106,22 @@ public class GameActivity extends AppCompatActivity
         initPaints();
         floodView.setPaints(paints);
 
-        ImageView settingsButton = (ImageView) findViewById(R.id.settingsButton);
-        settingsButton.setOnClickListener(new View.OnClickListener() {
-                                              @Override
-                                              public void onClick(View v) {
-              Intent launchSettingsIntent = new Intent(GameActivity.this, SettingsActivity.class);
-              startActivityForResult(launchSettingsIntent, UPDATE_SETTINGS);
-          }
-      }
-        );
-
-        ImageView infoButton = (ImageView) findViewById(R.id.infoButton);
-        infoButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent launchSettingsIntent = new Intent(GameActivity.this, InfoActivity.class);
-                startActivity(launchSettingsIntent);
-            }
-        });
-
-        ImageView newGameButton = (ImageView) findViewById(R.id.newGameButton);
-        newGameButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                newGame();
-            }
-        });
-        newGameButton.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                SeedDialogFragment seedDialogFragment = new SeedDialogFragment();
-                seedDialogFragment.show(getSupportFragmentManager(), "SeedDialog");
-                return true;
-            }
-        });
+//
+//        ImageView newGameButton = (ImageView) findViewById(R.id.newGameButton);
+//        newGameButton.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//
+//            }
+//        });
+//        newGameButton.setOnLongClickListener(new View.OnLongClickListener() {
+//            @Override
+//            public boolean onLongClick(View v) {
+//                SeedDialogFragment seedDialogFragment = new SeedDialogFragment();
+//                seedDialogFragment.show(getSupportFragmentManager(), "SeedDialog");
+//                return true;
+//            }
+//        });
 
         // Get the steps text view
         stepsTextView = (TextView) findViewById(R.id.stepsTextView);
@@ -116,7 +146,7 @@ public class GameActivity extends AppCompatActivity
         spEditor.apply();
     }
 
-    private int getBoardSize(){
+    private int getBoardSize() {
         int defaultBoardSize = getResources().getInteger(R.integer.default_board_size);
         if (!sp.contains("board_size")) {
             spEditor.putInt("board_size", defaultBoardSize);
@@ -125,7 +155,7 @@ public class GameActivity extends AppCompatActivity
         return sp.getInt("board_size", defaultBoardSize);
     }
 
-    private int getNumColors(){
+    private int getNumColors() {
         int defaultNumColors = getResources().getInteger(R.integer.default_num_colors);
         if (!sp.contains("num_colors")) {
             spEditor.putInt("num_colors", defaultNumColors);
@@ -136,7 +166,7 @@ public class GameActivity extends AppCompatActivity
 
     private void initPaints() {
         int[] colors;
-        if (sp.getBoolean("use_old_colors", false)){
+        if (sp.getBoolean("use_old_colors", false)) {
             colors = getResources().getIntArray(R.array.oldBoardColorScheme);
         } else {
             colors = getResources().getIntArray(R.array.boardColorScheme);

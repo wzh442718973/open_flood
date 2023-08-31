@@ -4,6 +4,8 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+
 import android.text.method.LinkMovementMethod;
 import android.view.View;
 import android.widget.Button;
@@ -20,42 +22,12 @@ public class InfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_info);
 
-        // Set up the first line of the info
-        TextView versionTextView = (TextView) findViewById(R.id.infoVersionTextView);
-        String appName = getResources().getString(R.string.app_name);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setNavigationIcon(R.drawable.baseline_home_24);
 
-        PackageInfo pInfo;
-        try {
-            pInfo = getPackageManager().getPackageInfo(this.getPackageName(), 0);
-            versionTextView.setText(appName + " " + pInfo.versionName);
-        } catch (PackageManager.NameNotFoundException e) {
-            versionTextView.setText(appName);
-        }
-
-        // Set up the source link
-        TextView sourceTextView = (TextView) findViewById(R.id.infoSourceTextView);
-        sourceTextView.setMovementMethod(LinkMovementMethod.getInstance());
-
-        // Set up the back button
-        Button backButton = (Button) findViewById(R.id.backButton);
-        backButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
+        toolbar.setNavigationOnClickListener((view) ->{
+            finish();
         });
-
-        findViewById(R.id.appNameTextView).setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
-                Toast toast = Toast.makeText(InfoActivity.this,
-                        "Eric Hamber Secondary Class of 2016",
-                        Toast.LENGTH_LONG);
-                toast.show();
-                return true;
-            }
-        });
-
-        return;
     }
 }

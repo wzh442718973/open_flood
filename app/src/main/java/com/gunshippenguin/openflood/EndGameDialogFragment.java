@@ -92,18 +92,6 @@ public class EndGameDialogFragment extends DialogFragment {
 
         }
 
-        // Set up the get seed button
-        TextView seedTextView  = (TextView) layout.findViewById(R.id.seedTextView);
-        seedTextView.setText(String.format(getString(R.string.endgame_seed),
-                getArguments().getString("seed")));
-        seedTextView.setTextColor(Color.BLUE);
-        seedTextView.setPaintFlags(seedTextView.getPaintFlags() | Paint.UNDERLINE_TEXT_FLAG);
-        seedTextView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                listener.onGetSeedClick();
-            }
-        });
 
         // Show the replay butotn if the game has been lost
         Button replayButton = (Button) layout.findViewById(R.id.replayButton);

@@ -12,7 +12,6 @@
     <string name="endgame_lose_title">Game Over</string>
     <string name="endgame_new_game_button">Nuevo Juego</string>
     <string name="endgame_replay">Volver a Jugar</string>
-    <string name="endgame_seed" fomatted="false">Semilla: %s (toca para copiar)</string>
 
     <!-- Seed Dialog -->
     <string name="seed_dialog_title">Nuevo juego a partir de semilla</string>
@@ -34,20 +33,5 @@
     <string name="settings_clear_high_scores_dialog_cancel">No</string>
     <string name="settings_clear_high_scores_toast">Puntuaciones altas eliminadas</string>
 
-    <!-- Info activity -->
-    <string name="info_license">Lanzado bajo la MIT License</string>
-    <string name="info_source"><a href="http://github.com/gunshippenguin/open_flood">github.com/GunshipPenguin/open_flood</a></string>
-    <string name="info_instructions_title">Jugabilidad</string>
-    <string name="info_instructions">
-        Comienza en la esquina superior izquierda del tablero. Toca los botones de colores que están
-        a lo largo de la parte inferior del tablero para completar las celdas adyacentes con ese color.
-        El propósito del juego es llenar el tablero completo con un solo color utilizando la menor cantidad
-        de movimientos permitidos posible.
-    </string>
-    <string name="info_seeds_title">Semillas</string>
-    <string name="info_seeds">
-        Las semillas te permiten guardar tableros para jugar con ellos más tarde o compartirlos con tus amigos.
-        Para generar un tablero a partir de una semilla, mantén presionado el botón de nuevo juego.
-    </string>
-    <string name="info_back">Regresar</string>
+
 </resources>
